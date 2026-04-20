@@ -19,7 +19,7 @@ jobs:
           ignoredLabels: "blocked"
       - name: Post to a Slack channel
         id: slack
-        uses: slackapi/slack-github-action@v1.27.1
+        uses: slackapi/slack-github-action@v3.0.1
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           slack-message: "${{ steps.local.outputs.message }}"
