@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{github.event.pull_request.head.ref}}
@@ -20,7 +20,7 @@ jobs:
 
       - name: Calculate Code Diff
         id: calculate_diff
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           result-encoding: string
           script: |
@@ -55,7 +55,7 @@ jobs:
       - name: Add Pull Request Comment
         id: add_pull_request_comment
         if: contains(steps.should_run_semgrep.outputs.hasChanges, 'true')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string
